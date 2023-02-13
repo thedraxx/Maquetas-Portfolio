@@ -20,6 +20,7 @@ module.exports = {
       dark: "#2c2f33",
       white: "#F9FAFB",
       navbar: "#F0EEED",
+      red: "#F87171",
     },
     fontFamily: {
       sans: ["Inter", "sans-serif"],
