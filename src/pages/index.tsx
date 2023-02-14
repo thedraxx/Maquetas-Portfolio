@@ -6,10 +6,12 @@ import Projects from '@/components/UI/Projects/Projects';
 
 const index = () => {
   return (
+
     <Layout>
       <ContainerImg />
       <Projects />
     </Layout>
+
   )
 }
 
