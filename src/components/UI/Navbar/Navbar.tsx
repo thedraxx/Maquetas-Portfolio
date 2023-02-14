@@ -1,5 +1,5 @@
+import Link from 'next/link';
 import React from 'react'
-import * as navbarStyles from '../../styles/Navbar.module.css'
 
 const Navbar = () => {
 
@@ -19,6 +19,10 @@ const Navbar = () => {
 
     const contact = () => {
         window.location.hash = "#contact";
+    };
+
+    const GoToLoginPage = () => {
+
     };
 
     return (
@@ -46,6 +50,12 @@ const Navbar = () => {
                         <a onClick={contact} href="#responsive-header" className="block mt-4   lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 text-dark text-lg  transition ease-in-out delay-50">
                             text
                         </a>
+                        <Link href={"/login"}>
+                            <h1 className="block mt-4   lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 text-dark text-lg  transition ease-in-out delay-50">
+                                Login
+                            </h1>
+                        </Link>
+
                     </div>
                 </div>
             </nav>
