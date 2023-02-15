@@ -1,6 +1,9 @@
+import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
 
 const Login = () => {
+
+    const router = useRouter();
 
     const [name, setName] = useState<string>('');
     const [usser, setUsser] = useState<string>('');
@@ -22,6 +25,9 @@ const Login = () => {
         //TODO crear peticion axios para crear un nuevo usuario
 
         console.log(newUser);
+
+        //TODO: lo redirige a la pantalla para subir una imagen
+        router.push('/Upload');
     }
 
 
@@ -40,7 +46,7 @@ const Login = () => {
             <form
                 className='flex flex-col col-auto col-span-1 mt-10'
             >
-                <h1 className=' text-xl text-center text-dark'>Agrega Tu Proyecto!</h1>
+                <h1 className=' text-xl text-center text-dark mb-1'>Iniciar sesion</h1>
                 <input
                     className='mt-2 mb-5 p-5 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75'
                     placeholder="Usuario"
@@ -61,7 +67,7 @@ const Login = () => {
                     type="submit"
                     onClick={(e) => handlesSubmit(e)}
                     disabled={isValid}>
-                    Cargar Proyecto
+                    Login
                 </button>
             </form>
         </div>

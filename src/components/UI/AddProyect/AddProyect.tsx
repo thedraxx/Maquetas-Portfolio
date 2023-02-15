@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { UploadContext } from '@/components/context/Upload';
+import uploadAPI from '@/api/UploadApi';
 
 const AddProyect = () => {
 
-    const { handleAddMaqueta, urlOfImages, isValid } = useContext(UploadContext);
+
+    const { handleAddMaqueta, urlOfImages, isValid, clearProyect } = useContext(UploadContext);
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
 
@@ -12,13 +14,26 @@ const AddProyect = () => {
         const newMaqueta = {
             title,
             description,
-            urlOfImages
+            img: urlOfImages
         }
 
         //TODO hacer peticion axios para crear un nuevo proyecto
         console.log(newMaqueta);
 
-        console.log(urlOfImages);
+
+        // TODO ESTA VERGA NO ANDA
+        // const uploadProyect = await uploadAPI.post('projects/', {
+        //     title: "titulo desde api",
+        //     description: "desde api",
+        //     technology: 'React',
+        // });
+
+
+        // console.log(uploadProyect);
+
+        setTitle('');
+        setDescription('');
+        clearProyect();
     }
 
     return (
@@ -50,10 +65,11 @@ const AddProyect = () => {
                 />
 
                 <button
-                    className='mt-2 mb-5 p-5 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75'
                     type="submit"
                     onClick={(e) => handleAdd(e)}
-                    disabled={isValid}>
+                    disabled={isValid}
+                    className={`${isValid ? 'bg-gray mt-2 mb-5 p-5 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75' : 'bg-blue mt-2 mb-5 p-5 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75'}`}
+                >
                     Cargar Proyecto
                 </button>
             </form>

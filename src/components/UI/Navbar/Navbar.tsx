@@ -38,18 +38,12 @@ const Navbar = () => {
                 </div>
                 <div className={`w-full block flex-end lg:flex lg:items-center  ${isOpen ? "lg:w-auto hidden " : "lg:w-auto"}`}>
                     <div className={`text-sm   lg:flex-grow  `}>
-                        <a onClick={redirigirAbout} href="#responsive-header" className="block mt-4  lg:inline-block lg:mt-0 text-black-200 hover:text-white mr-4 text-dark text-lg  transition ease-in-out delay-50">
-                            text
-                        </a>
-                        <a onClick={myProjects} href="#responsive-header" className="block mt-4   lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 text-dark text-lg  transition ease-in-out delay-50">
-                            text
-                        </a>
-                        <a onClick={skills} href="#responsive-header" className="block mt-4   mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white text-dark text-lg  transition ease-in-out delay-50">
-                            text
-                        </a>
-                        <a onClick={contact} href="#responsive-header" className="block mt-4   lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 text-dark text-lg  transition ease-in-out delay-50">
-                            text
-                        </a>
+                        <Link href={"/"}>
+                            <h1 className="block mt-4   lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 text-dark text-lg  transition ease-in-out delay-50">
+                                Inicio
+                            </h1>
+                        </Link>
+
                         <Link href={"/login"}>
                             <h1 className="block mt-4   lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 text-dark text-lg  transition ease-in-out delay-50">
                                 Login

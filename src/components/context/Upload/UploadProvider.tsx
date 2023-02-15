@@ -57,10 +57,17 @@ export const UploadProvider = ({ children }: Props) => {
         }
     }
 
+    const clearProyect = () => {
+        dispatch({
+            type: '[Upload] - ClearProyect',
+        })
+    }
+
     return (
         <UploadContext.Provider value={{
             ...state,
-            handleAddMaqueta
+            handleAddMaqueta,
+            clearProyect
         }}>
             {children}
         </UploadContext.Provider>

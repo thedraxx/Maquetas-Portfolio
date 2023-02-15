@@ -6,6 +6,7 @@ export interface UploadContextProps {
 
     //Method
     handleAddMaqueta: ([]: any) => void;
+    clearProyect: () => void;
 }
 
 export const UploadContext = createContext({} as UploadContextProps);

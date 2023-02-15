@@ -3,7 +3,8 @@ import { UploadState } from "./";
 type UploadActionType =
   | { type: "[Upload] - isValidPressButton" }
   | { type: "[Upload] - AddFile"; payload: string }
-  | { type: "[Upload] - Loading"; payload: boolean };
+  | { type: "[Upload] - Loading"; payload: boolean }
+  | { type: "[Upload] - ClearProyect" };
 
 export const UploadReducer = (
   state: UploadState,
@@ -26,6 +27,13 @@ export const UploadReducer = (
         ...state,
         urlOfImages: [...state.urlOfImages, action.payload],
         isValid: true,
+      };
+
+    case "[Upload] - ClearProyect":
+      return {
+        ...state,
+        urlOfImages: [],
+        isValid: false,
       };
     default:
       return state;
