@@ -1,4 +1,4 @@
-import uploadAPI from '@/api/UploadApi';
+import uploadAPI from '@/api/uploadApi';
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
@@ -13,17 +13,16 @@ const Projects = () => {
 
 
     const elsexo = async () => {
-        const uploadProyect = await uploadAPI('projects/');
-
-        console.log(uploadProyect);
+        // const uploadProyect = await uploadAPI('projects/');
+        // console.log(uploadProyect);
     }
-
 
     return (
 
-        <div className='flex justify-center items-center w-auto h-auto'>
+        <div className='  flex justify-center items-center w-auto h-auto'>
             <div className='grid content-around m-5 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50  '>
-                <div className='relative flex justify-center flex-col items-center w-auto h-auto hover'>
+
+                <div className='relative flex justify-center flex-col items-center w-auto h-auto '>
                     <img src='https://www.iamanufacturing.com/wp-content/uploads/2021/08/maqueta-ensayos-ingenieria-solar.jpg' width={500} height={500} alt='project' className='p-5 ' />
                     <Link
                         href={`/maqueta/${246}`}
@@ -35,7 +34,7 @@ const Projects = () => {
                 </div>
 
 
-                <div className='relative flex justify-center flex-col items-center w-auto h-auto hover'>
+                <div className='relative flex justify-center flex-col items-center w-auto h-auto '>
                     <img src='https://www.iamanufacturing.com/wp-content/uploads/2021/08/maqueta-ensayos-ingenieria-solar.jpg' width={500} height={500} alt='project' className='p-5 ' />
                     <Link
                         href={`/maqueta/${24}`}
@@ -47,7 +46,7 @@ const Projects = () => {
 
 
 
-                <div className='relative flex justify-center flex-col items-center w-auto h-auto hover'>
+                <div className='relative flex justify-center flex-col items-center w-auto h-auto '>
                     <img src='https://www.iamanufacturing.com/wp-content/uploads/2021/08/maqueta-ensayos-ingenieria-solar.jpg' width={500} height={500} alt='project' className='p-5 ' />
                     <Link
                         href={`/maqueta/${244}`}

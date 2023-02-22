@@ -1,35 +1,43 @@
 import Head from 'next/head'
 import React from 'react'
 import Navbar from '../UI/Navbar/Navbar';
+import Footer from '../UI/Footer/Footer';
 
 
 interface LayoutProps {
     children: React.ReactNode,
-    title?: string
+    title: string,
+    description: string,
 }
 
 const origin = (process.env.NODE_ENV === 'development') ? 'http://localhost:3000' : ''
 
-const Layout = ({ children, title }: LayoutProps) => {
+const Layout = ({ children, title = "xd", description = "xd", }: LayoutProps) => {
 
     return (
         <>
             <Head>
                 <title>{title}</title>
-                <meta name="app" content="Mi Portafolio" />
-                <meta name="descripcion" content={`Este es el portafolio de Francisco Cerrano`} />
-                <meta name="keywords" content={`${title}`} />
+                <meta name="app" content={description} />
+                <meta name="descripcion" content={description} />
+                <meta name="keywords" content={title} />
                 <meta property="og:title" content={`Bienvenido Navegante`} />
-                <meta property="og:description" content={`Esto es el portafolio de Frank`} />
+                <meta property="og:description" content={`Esto es un portfolio`} />
                 <meta property="og:image" content={origin} />
+
             </Head>
             <Navbar />
 
-            <main style={{
-                padding: '1rem 1rem'
-            }}>
+
+
+            <main >
                 {children}
             </main>
+
+
+            <Footer />
+
+
         </>
     )
 }

@@ -42,7 +42,7 @@ const Login = () => {
 
 
     return (
-        <div className='flex flex-col col-auto'>
+        <div className='flex flex-col col-auto mb-96'>
             <form
                 className='flex flex-col col-auto col-span-1 mt-10'
             >
@@ -63,7 +63,10 @@ const Login = () => {
                 />
 
                 <button
-                    className='mt-2 mb-5 p-5 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75'
+                    className={`
+                        ${isValid ? 'mt-2 mb-5 p-5 bg-gray rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 trasition duration-500 ease-in-out ' : 'mt-2 mb-5 p-5 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 trasition duration-500 ease-in-out hover:bg-blue-500 hover:text-white'}
+                    `}
+                    // className='mt-2 mb-5 p-5 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75'
                     type="submit"
                     onClick={(e) => handlesSubmit(e)}
                     disabled={isValid}>

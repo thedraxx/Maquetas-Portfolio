@@ -9,6 +9,13 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+
+    screens: {
+      'sm': "360px",
+      'md': "768px",
+      'lg': "1024px",
+    },
+
     extend: {
       scale: {
         '-100': '-1',
@@ -23,7 +30,7 @@ module.exports = {
       red: "#F87171",
       button: "#E5FDD1",
       blue: "#60A5FA",
-      gray: "#A0AEC0",
+      gray: "#DFDFDE",
     },
     fontFamily: {
       sans: ["Inter", "sans-serif"],

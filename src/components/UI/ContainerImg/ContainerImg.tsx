@@ -1,12 +1,11 @@
 import React from 'react'
 import Image from 'next/image';
 import InfoUsser from '../InfoUsser/InfoUsser';
-
+// 
 const ContainerImg = () => {
     return (
         <>
-            <div className="flex flex-1 justify-center items-center content-center bg-black h-auto ">
-
+            <div className="flex flex-1 justify-center items-center content-center bg-black h-auto  sm:p-0 lg:p-24">
                 <div className='relative'>
                     <img className="object-fill " src='https://www.iamanufacturing.com/wp-content/uploads/2021/08/maqueta-ensayos-ingenieria-solar.jpg' alt='Picture of the author' width={700} height={700} placeholder="blur" />
 

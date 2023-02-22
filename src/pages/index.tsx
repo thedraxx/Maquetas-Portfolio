@@ -7,7 +7,10 @@ import Projects from '@/components/UI/Projects/Projects';
 const index = () => {
   return (
 
-    <Layout>
+    <Layout
+      title='Home | Portafolio'
+      description='Portafolio de proyectos'
+    >
       <ContainerImg />
       <Projects />
     </Layout>
