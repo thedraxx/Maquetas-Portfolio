@@ -1,63 +1,41 @@
-import uploadAPI from '@/api/uploadApi';
-import Image from 'next/image'
+import Image from 'next/image';
 import Link from 'next/link'
-import { useRouter } from 'next/router';
-import React, { useEffect } from 'react'
+import React from 'react'
 
-const Projects = () => {
+interface Props {
+    title: string;
+    image: string;
+    id: number;
+}
 
+const Projects = ({ title, image, id }: Props) => {
 
-    useEffect(() => {
-        elsexo();
-    }, [])
+    let imagen = ""
 
+    // Eliminamos lo que haya despues de la coma
 
-    const elsexo = async () => {
-        // const uploadProyect = await uploadAPI('projects/');
-        // console.log(uploadProyect);
+    if (image.includes(',')) {
+        const letraEliminar = ","
+        let posicion = image.indexOf(letraEliminar)
+        imagen = image.slice(0, posicion)
+    }
+
+    else {
+        imagen = image
     }
 
     return (
 
-        <div className='  flex justify-center items-center w-auto h-auto'>
-            <div className='grid content-around m-5 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50  '>
-
-                <div className='relative flex justify-center flex-col items-center w-auto h-auto '>
-                    <img src='https://www.iamanufacturing.com/wp-content/uploads/2021/08/maqueta-ensayos-ingenieria-solar.jpg' width={500} height={500} alt='project' className='p-5 ' />
-                    <Link
-                        href={`/maqueta/${246}`}
-                        className='absolute  text-2xl font-bold text-white'
-                    >
-                        Proyecto 2
-                    </Link>
-
-                </div>
-
-
-                <div className='relative flex justify-center flex-col items-center w-auto h-auto '>
-                    <img src='https://www.iamanufacturing.com/wp-content/uploads/2021/08/maqueta-ensayos-ingenieria-solar.jpg' width={500} height={500} alt='project' className='p-5 ' />
-                    <Link
-                        href={`/maqueta/${24}`}
-                        className='absolute  text-2xl font-bold text-white'
-                    >
-                        Proyecto 2
-                    </Link>
-                </div>
-
-
-
-                <div className='relative flex justify-center flex-col items-center w-auto h-auto '>
-                    <img src='https://www.iamanufacturing.com/wp-content/uploads/2021/08/maqueta-ensayos-ingenieria-solar.jpg' width={500} height={500} alt='project' className='p-5 ' />
-                    <Link
-                        href={`/maqueta/${244}`}
-                        className='absolute  text-2xl font-bold text-white'
-                    >
-                        Proyecto 2
-                    </Link>
-
-                </div>
-            </div>
+        <div className='relative flex justify-center flex-col items-center w-auto h-auto  '>
+            <Image src={imagen} width={400} height={500} alt='project' className='p-5 ' />
+            <Link
+                href={`/maqueta/${id}`}
+                className='absolute  text-2xl font-bold text-white'
+            >
+                {title}
+            </Link>
         </div>
+
     )
 }
 

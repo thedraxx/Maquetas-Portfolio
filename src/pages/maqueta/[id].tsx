@@ -1,11 +1,20 @@
 import React from 'react'
 import Layout from '../../components/Layout/Layout';
-// 
-const maqueta = () => {
+import { GetStaticPaths, GetStaticProps } from 'next'
+import uploadAPI from '@/api/uploadApi';
+import { IProyectIndividual, IProyects } from '@/interface';
+import Image from 'next/image';
+
+interface Props {
+    project: IProyectIndividual
+}
+
+const maqueta = ({ project }: Props) => {
+
     return (
         <Layout
-            title='Maqueta'
-            description='Esta es la pagina de la maqueta'
+            title={project.title}
+            description={project.description}
         >
             <div
                 className='flex justify-center items-center'
@@ -13,12 +22,16 @@ const maqueta = () => {
                 <div
                     className='sm:flex justify-center items-center w-auto h-auto p-5 flex-col col-auto lg:flex-row'
                 >
-                    <img src='https://www.iamanufacturing.com/wp-content/uploads/2021/08/maqueta-ensayos-ingenieria-solar.jpg' width={700} height={700} alt='project' className='p-5 rounded-xl' style={{
-                        borderRadius: '50px',
+                    <img src={
+                        project.img.includes(',') ?
+                            project.img.slice(0, project.img.indexOf(','))
+                            :
+                            project.img
 
+                    } width={700} height={700} alt='project' className='p-5 rounded-xl' style={{
+                        borderRadius: '50px',
                         border: 'none',
                         boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.1)',
-
                     }} />
 
                     <div
@@ -26,9 +39,9 @@ const maqueta = () => {
                     >
                         <h1
                             className='text-3xl font-bold text-black mb-5'
-                        >Maqueta General de Torre</h1>
+                        >{project.title}</h1>
                         <h2 className='text-xl text-black mb-5 items-center  justify-center first-letter:uppercase '>
-                            Esta maqueta fue disenada con el proposito de ser la mas copada del mundo, cuenta con 5 espacios y habitaciones, tambien esta hecha de acero
+                            {project.description}
                         </h2>
                     </div>
 
@@ -40,14 +53,64 @@ const maqueta = () => {
             </div>
 
             <div className='grid content-around m-5 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50  '>
-                <img src='https://www.iamanufacturing.com/wp-content/uploads/2021/08/maqueta-ensayos-ingenieria-solar.jpg' width={700} height={700} alt='project' className='p-5 rounded-xl' />
-                <img src='https://www.iamanufacturing.com/wp-content/uploads/2021/08/maqueta-ensayos-ingenieria-solar.jpg' width={700} height={700} alt='project' className='p-5 rounded-xl' />
-                <img src='https://www.iamanufacturing.com/wp-content/uploads/2021/08/maqueta-ensayos-ingenieria-solar.jpg' width={700} height={700} alt='project' className='p-5 rounded-xl' />
+
+                {
+                    project.img.includes(',') ?
+                        project.img.slice(project.img.indexOf(',') + 1).split(',').map((img, index) => (
+                            <Image
+                                key={index}
+                                src={img} width={700} height={700} alt='project' className='p-5 rounded-xl' />
+
+                        ))
+                        :
+                        null
+                }
+
 
             </div>
 
         </Layout>
     )
 }
+
+
+export const getStaticPaths: GetStaticPaths = async () => {
+
+    const { data } = await uploadAPI.get<IProyects[]>('/posts')
+
+    const paths = data.map((project: any) => ({
+        params: { id: project.idposts.toString() }
+    }))
+
+    return {
+        paths,
+        fallback: false
+    }
+
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+
+    const { data } = await uploadAPI.get<IProyectIndividual>(`/posts/${params?.id}`)
+
+    if (!data) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false
+            }
+        }
+    }
+
+    return {
+        props: {
+            project: data,
+            revalidate: 86400
+        }
+    }
+}
+
+
+
 
 export default maqueta

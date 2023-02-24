@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { UploadContext } from '@/components/context/Upload';
-import uploadAPI from '@/api/UploadApi';
+import uploadAPI from '@/api/uploadApi';
+
 
 const AddProyect = () => {
-
 
     const { handleAddMaqueta, urlOfImages, isValid, clearProyect } = useContext(UploadContext);
     const [title, setTitle] = useState<string>('');
@@ -14,23 +14,23 @@ const AddProyect = () => {
         const newMaqueta = {
             title,
             description,
-            img: urlOfImages
+            img: urlOfImages.toString()
         }
 
-        //TODO hacer peticion axios para crear un nuevo proyecto
-        console.log(newMaqueta);
+        const newMaquetaJSON = JSON.stringify(newMaqueta);
 
+        // hacer peticion axios para crear un nuevo proyecto
+        const uploadProyect = await uploadAPI.post('/posts',
+            newMaquetaJSON,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }
+        );
+        console.log(uploadProyect);
 
-        // TODO ESTA VERGA NO ANDA
-        // const uploadProyect = await uploadAPI.post('projects/', {
-        //     title: "titulo desde api",
-        //     description: "desde api",
-        //     technology: 'React',
-        // });
-
-
-        // console.log(uploadProyect);
-
+        // reseteo los valores
         setTitle('');
         setDescription('');
         clearProyect();
