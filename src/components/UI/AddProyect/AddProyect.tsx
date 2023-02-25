@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { UploadContext } from '@/components/context/Upload';
 import uploadAPI from '@/api/uploadApi';
+import { LoginContext } from '@/components/context/Login/LoginContext';
 
 
 const AddProyect = () => {
+    const { StartLogout } = useContext(LoginContext)
 
     const { handleAddMaqueta, urlOfImages, isValid, clearProyect } = useContext(UploadContext);
     const [title, setTitle] = useState<string>('');
@@ -73,6 +75,13 @@ const AddProyect = () => {
                     Cargar Proyecto
                 </button>
             </form>
+
+            <button
+                onClick={(e) => StartLogout()}
+                className='bg-red mt-2 mb-5 p-5 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75'
+            >
+                Salir
+            </button>
         </div>
     )
 }

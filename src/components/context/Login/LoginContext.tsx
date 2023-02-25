@@ -1,7 +1,11 @@
 import { createContext } from 'react';
 
 export interface UIContextProps {
-    isLoggin: boolean;
+    isLoggedIn: boolean;
+
+    // Method
+    StartLogin: (user: string, password: string) => void;
+    StartLogout: () => void;
 }
 
 export const LoginContext = createContext({} as UIContextProps);

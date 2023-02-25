@@ -1,9 +1,12 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react'
 
 const Navbar = () => {
 
     const [isOpen, setIsOpen] = React.useState(true);
+
+    const ruta = useRouter()
 
     return (
         <>
@@ -21,11 +24,13 @@ const Navbar = () => {
                 </div>
                 <div className={`w-full block flex-end lg:flex lg:items-center  ${isOpen ? "lg:w-auto hidden " : "lg:w-auto"}`}>
                     <div className={`text-sm   lg:flex-grow  `}>
-                        <Link href={"/login"}>
-                            <h1 className="block mt-4   lg:inline-block lg:mt-0 text-teal-200 hover:text-gray mr-4 text-dark text-lg  transition ease-in-out delay-50">
-                                Login
-                            </h1>
-                        </Link>
+                        {
+                            ruta.pathname === "/Upload" ? null : <Link href={"/login"}>
+                                <h1 className="block mt-4   lg:inline-block lg:mt-0 text-teal-200 hover:text-gray mr-4 text-dark text-lg  transition ease-in-out delay-50">
+                                    Login
+                                </h1>
+                            </Link>
+                        }
                     </div>
                 </div>
             </nav>

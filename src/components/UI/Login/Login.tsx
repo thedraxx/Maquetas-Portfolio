@@ -1,10 +1,11 @@
+import { LoginContext } from '@/components/context/Login/LoginContext';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
 
 const Login = () => {
 
     const router = useRouter();
-
+    const { StartLogin } = useContext(LoginContext);
     const [name, setName] = useState<string>('');
     const [usser, setUsser] = useState<string>('');
     const [isValid, setIsValid] = useState<boolean>(true);
@@ -21,6 +22,8 @@ const Login = () => {
             name,
             usser,
         }
+
+        StartLogin(name, usser);
 
         //TODO crear peticion axios para crear un nuevo usuario
 
