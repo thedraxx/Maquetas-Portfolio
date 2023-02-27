@@ -19,7 +19,10 @@ const index = ({ proyects }: Props) => {
       title='Home | Portafolio'
       description='Portafolio de proyectos'
     >
-      <ContainerImg />
+      <ContainerImg
+        proyects={proyects}
+      />
+
       <div className='grid content-around m-5 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50'>
         {
           proyects.map((proyect) => (
