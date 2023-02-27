@@ -11,23 +11,19 @@ interface Props {
 
 const ContainerImg = ({ proyects }: Props) => {
 
-    const [imagesProyects, setimagesProyects] = useState(proyects.length)
-
-
-
+    const [imagesProyects, setimagesProyects] = useState(proyects.length - 1)
 
     const plusImage = () => {
-        if (imagesProyects < proyects.length) {
+        if (imagesProyects < proyects.length - 1) {
             setimagesProyects(imagesProyects + 1)
         }
     }
 
     const lessImage = () => {
-        if (imagesProyects > 0) {
+        if (imagesProyects > 0 && imagesProyects <= proyects.length - 1) {
             setimagesProyects(imagesProyects - 1)
         }
     }
-
 
     return (
         <div className="flex flex-1 flex-col justify-center items-center content-center bg-black h-auto  sm:p-0 lg:p-10">
@@ -52,7 +48,9 @@ const ContainerImg = ({ proyects }: Props) => {
                         <h1
                             className="text-white text-2xl font-bold text-center ml-10"
                         >
-                            +
+                            {
+                                "<"
+                            }
                         </h1>
                     </button>
                     <button
@@ -64,12 +62,14 @@ const ContainerImg = ({ proyects }: Props) => {
                         <h1
                             className="text-white text-2xl font-bold text-center ml-10"
                         >
-                            +
+                            {
+                                ">"
+                            }
                         </h1>
                     </button>
                 </div>
                 <Image
-                    src={proyects[1].img}
+                    src={proyects[imagesProyects].img}
                     alt={"imagen"}
                     width={300}
                     height={300}
@@ -78,7 +78,7 @@ const ContainerImg = ({ proyects }: Props) => {
                 <h1
                     className="text-white text-2xl font-bold text-center ml-10"
                 >
-                    {proyects[1].title}
+                    {proyects[imagesProyects].title}
                 </h1>
 
 

@@ -30,7 +30,7 @@ const Login = () => {
         console.log(newUser);
 
         //TODO: lo redirige a la pantalla para subir una imagen
-        router.push('/Upload');
+        router.replace('/Upload');
     }
 
 
