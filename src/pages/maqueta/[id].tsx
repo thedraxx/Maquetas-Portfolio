@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import uploadAPI from '@/api/uploadApi';
 import { IProyectIndividual, IProyects } from '@/interface';
 import Image from 'next/image';
+import Footer from '../../components/UI/Footer/Footer';
 
 interface Props {
     project: IProyectIndividual
@@ -12,64 +13,77 @@ interface Props {
 const maqueta = ({ project }: Props) => {
 
     return (
-        <Layout
-            title={project.title}
-            description={project.description}
-        >
-            <div
-                className='flex justify-center items-center'
+        <>
+            <Layout
+                title={project.title}
+                description={project.description}
             >
                 <div
-                    className='sm:flex justify-center items-center w-auto h-auto p-5 flex-col col-auto lg:flex-row'
+                    className='flex justify-center items-center'
                 >
-                    <img src={
-                        project.img.includes(',') ?
-                            project.img.slice(0, project.img.indexOf(','))
-                            :
-                            project.img
-
-                    } width={700} height={700} alt='project' className='p-5 rounded-xl' style={{
-                        borderRadius: '50px',
-                        border: 'none',
-                        boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.1)',
-                    }} />
-
                     <div
-                        className='flex justify-center items-center w-auto h-auto p-5 flex-col col-auto w-1/3'
+                        className='sm:flex justify-center items-center w-auto h-auto p-5 flex-col col-auto lg:flex-col xl:flex-col'
                     >
-                        <h1
-                            className='text-3xl font-bold text-black mb-5'
-                        >{project.title}</h1>
-                        <h2 className='text-xl text-black mb-5 items-center  justify-center first-letter:uppercase '>
-                            {project.description}
-                        </h2>
+                        <Image src={
+                            project.img.includes(',') ?
+                                project.img.slice(0, project.img.indexOf(','))
+                                :
+                                project.img
+
+                        } width={700} height={700} alt='project' className='p-5 rounded-xl' style={{
+                            borderRadius: '50px',
+                            border: 'none',
+                            boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.1)',
+                        }} />
+
+                        <div
+                            className='mt-5  text-center flex justify-center items-center w-auto h-auto p-5 flex-col col-auto w-1/3'
+                        >
+                            <h1
+                                className='text-3xl font-bold text-black mb-5'
+                            >{project.title}</h1>
+                            <h2 className='text-xl text-black mb-5 items-center  justify-center first-letter:uppercase '>
+                                {project.description}
+                            </h2>
+                        </div>
                     </div>
-
-
                 </div>
 
 
+                <div
 
-            </div>
+                    className=' grid content-around m-5 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50'
 
-            <div className='grid content-around m-5 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50  '>
+                >
+                    {
+                        project.img.includes(',') ?
+                            project.img.slice(project.img.indexOf(',') + 1).split(',').map((img, index) => (
+                                <div
+                                    key={index}
 
-                {
-                    project.img.includes(',') ?
-                        project.img.slice(project.img.indexOf(',') + 1).split(',').map((img, index) => (
-                            <Image
-                                key={index}
-                                src={img} width={700} height={700} alt='project' className='p-5 rounded-xl' />
+                                >
+                                    <Image
+                                        key={index}
+                                        src={img} width={400} height={400} alt='project' className='p-5 rounded-xl' />
 
-                        ))
-                        :
-                        null
-                }
+                                </div>
+                            ))
+                            :
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    height: 'calc(50vh - 60px)',
+                                }}
+                            >
 
+                            </div>
+                    }
+                </div>
 
-            </div>
-
-        </Layout>
+            </Layout>
+        </>
     )
 }
 

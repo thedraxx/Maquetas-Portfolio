@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link'
 import React from 'react'
+import Footer from '../Footer/Footer';
 
 interface Props {
     title: string;
@@ -26,7 +27,8 @@ const Projects = ({ title, image, id }: Props) => {
 
     return (
 
-        <div className='relative flex justify-center flex-col items-center w-auto h-auto  '>
+        <div className='relative flex justify-center flex-col items-center w-auto h-auto mb-24   '
+        >
             <Image src={imagen} width={400} height={500} alt='project' className='p-5 ' />
             <Link
                 href={`/maqueta/${id}`}
@@ -34,7 +36,8 @@ const Projects = ({ title, image, id }: Props) => {
             >
                 {title}
             </Link>
-        </div>
+
+        </div >
 
     )
 }

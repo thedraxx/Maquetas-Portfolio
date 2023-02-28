@@ -30,13 +30,16 @@ const Layout = ({ children, title = "xd", description = "xd", }: LayoutProps) =>
 
 
 
-            <main >
+            <main
+                style={{
+                    backgroundColor: '#d6d6d6',
+                }}
+            >
                 {children}
             </main>
 
 
             <Footer />
-
 
         </>
     )

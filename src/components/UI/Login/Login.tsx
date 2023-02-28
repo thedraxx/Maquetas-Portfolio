@@ -62,7 +62,11 @@ const Login = () => {
 
 
     return (
-        <div className='flex flex-col col-auto mb-96'>
+        <div className='flex flex-col col-auto mb-96'
+            style={{
+                height: 'calc(50vh - 4rem)',
+            }}
+        >
             <form
                 className='flex flex-col col-auto col-span-1 mt-10'
             >

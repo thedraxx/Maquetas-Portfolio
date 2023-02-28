@@ -2,23 +2,46 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <footer className=" bg-black text-center text-white">
+        <footer
+            style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '60px',
+                backgroundColor: 'black',
+                bottom: '0',
+                width: '100%',
+                position: 'relative',
+                padding: ' 50px',
+            }}
+        >
             <div
-                className="p-4 text-center">
-                © 2023 Copyright:
-                <div className='flex flex-col'>
-                    <a className="text-whitehite" href="https://tailwind-elements.com/">Developed By</a>
-                    <div className='flex flex-row justify-center items-center '>
-                        <a className="text-whitehite mr-2" href="https://tailwind-elements.com/">Frank</a>
-                        <a className="text-whitehite  mr-2" href="https://tailwind-elements.com/"> & </a>
-                        <a className="text-whitehite  mr-2" href="https://tailwind-elements.com/">Tomas</a>
-                    </div>
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '100%',
+                    maxWidth: '1200px',
+                    flexDirection: 'column',
+                }}
 
-
-                </div>
-
+            >
+                <p style={{ color: 'white' }}>© 2021 - All rights reserved</p>
+                <h1
+                    style={{ color: 'white' }}
+                >
+                    Frank
+                </h1>
+                <h1
+                    style={{ color: 'white' }}
+                >
+                    Tomas
+                </h1>
             </div>
+
+
         </footer>
+
     )
 }
 
