@@ -1,6 +1,9 @@
+import { auth } from '@/components/auth/FirebaseAuth';
 import { LoginContext } from '@/components/context/Login/LoginContext';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+
 
 const Login = () => {
 
@@ -23,14 +26,28 @@ const Login = () => {
             usser,
         }
 
-        StartLogin(name, usser);
-
         //TODO crear peticion axios para crear un nuevo usuario
+        const email = name
+        const password = usser
 
-        console.log(newUser);
+        try {
+            const resp = await signInWithEmailAndPassword(auth, email, password);
 
-        //TODO: lo redirige a la pantalla para subir una imagen
-        router.replace('/Upload');
+            if (resp.user) {
+                StartLogin(resp.user.uid, resp.user.email!);
+                router.replace('/Upload');
+            }
+
+            console.log("No existe el usuario");
+
+        } catch (error) {
+
+            console.log(error);
+
+        }
+
+
+
     }
 
 
