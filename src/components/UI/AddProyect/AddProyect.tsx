@@ -3,20 +3,23 @@ import { UploadContext } from '@/components/context/Upload';
 import uploadAPI from '@/api/uploadApi';
 import { LoginContext } from '@/components/context/Login/LoginContext';
 
-
 const AddProyect = () => {
     const { StartLogout } = useContext(LoginContext)
-
     const { handleAddMaqueta, urlOfImages, isValid, clearProyect } = useContext(UploadContext);
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
+    const [materials, setMaterials] = useState<string>("")
+    const [stepbystep, setStepbystep] = useState<string>("")
+
 
     const handleAdd = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         const newMaqueta = {
             title,
             description,
-            img: urlOfImages.toString()
+            img: urlOfImages.toString(),
+            materials,
+            stepbystep
         }
 
         const newMaquetaJSON = JSON.stringify(newMaqueta);
@@ -35,13 +38,17 @@ const AddProyect = () => {
         // reseteo los valores
         setTitle('');
         setDescription('');
+        setMaterials('');
+        setStepbystep('');
         clearProyect();
     }
 
     return (
-        <div className='flex flex-col col-auto'>
+        <div className='flex flex-col col-auto'
+
+        >
             <form
-                className='flex flex-col col-auto col-span-1 mt-10'
+                className='flex flex-col col-auto  mt-10'
             >
                 <h1 className=' text-xl text-center text-dark'>Agrega Tu Proyecto!</h1>
                 <input
@@ -51,12 +58,28 @@ const AddProyect = () => {
                     onChange={({ target }) => setTitle(target.value)}
                     value={title}
                 />
-                <input
+                <textarea
                     className='mt-2 mb-5 p-5 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75'
                     placeholder="Descripcion del Proyecto"
-                    name='search'
+                    name='Descripcion del Proyecto'
                     onChange={({ target }) => setDescription(target.value)}
                     value={description}
+                />
+
+                <textarea
+                    className='mt-2 mb-5 p-5 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75'
+                    placeholder="Materiales Usados"
+                    name='Materiales Usados'
+                    onChange={({ target }) => setMaterials(target.value)}
+                    value={materials}
+                />
+
+                <textarea
+                    className='mt-2 mb-5 p-5 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75'
+                    placeholder="Paso A Paso"
+                    name='Paso A Paso'
+                    onChange={({ target }) => setStepbystep(target.value)}
+                    value={stepbystep}
                 />
 
                 <input
