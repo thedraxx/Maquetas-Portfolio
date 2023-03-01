@@ -1,93 +1,39 @@
-import React, { useState } from 'react'
-import Image from 'next/image';
-import InfoUsser from '../InfoUsser/InfoUsser';
-import { IProyects } from '@/interface';
+import Image from 'next/image'
+import React from 'react'
+
+const ContainerImg = () => {
 
 
-interface Props {
-    proyects: IProyects[]
-}
 
-
-const ContainerImg = ({ proyects }: Props) => {
-
-    const [imagesProyects, setimagesProyects] = useState(proyects.length - 1)
-
-    const plusImage = () => {
-        if (imagesProyects < proyects.length - 1) {
-            setimagesProyects(imagesProyects + 1)
-        }
-    }
-
-    const lessImage = () => {
-        if (imagesProyects > 0 && imagesProyects <= proyects.length - 1) {
-            setimagesProyects(imagesProyects - 1)
-        }
-    }
 
     return (
-        <div className="flex flex-1 flex-col justify-center items-center content-center bg-black h-auto  sm:p-0 lg:p-10">
-            <div className="flex justify-center items-center content-center bg-black h-auto  sm:p-0 lg:p-24">
+        <div>
+            <div className='sm: flex-col flex justify-center items-center bg-darkblue md:flex-row'>
+                <div className='sm:flex justify-center items-center w-auto h-auto p-5 flex-col col-auto lg:flex-col xl:flex-col'>
+                    <Image
+                        src="/images/banner.png"
+                        width={1000}
+                        height={400}
+                        alt='banner image'
+                        className='p-5 rounded-3xl'
+                    />
+                </div>
                 <div
                     style={{
-                        position: "absolute",
-                        zIndex: 999,
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        display: "flex",
-                        flex: 1,
-                        flexDirection: "row",
-                        width: "95%",
+                        width: '50%',
                     }}
                 >
-                    <button
-                        onClick={() => {
-                            lessImage()
-                        }}
-                    >
-                        <h1
-                            className="text-white text-2xl font-bold text-center ml-10"
-                        >
-                            {
-                                "<"
-                            }
-                        </h1>
-                    </button>
-                    <button
-                        onClick={() => {
-                            plusImage()
+                    <h1 className='text-4xl font-bold text-white mb-5'>Serie: Hombres de Mar</h1>
 
-                        }}
+                    <h2 className='text-xl text-white mb-5 first-letter:uppercase '>Bustos en escala 1:6 con temática marinera. Todos ellos están esculpidos con diferentes tipos de masillas y pintados en su mayoría con pinturas acrílicas.</h2>
+                    <h3
+                        className='text-xl text-white mb-5 first-letter:uppercase '
                     >
-                        <h1
-                            className="text-white text-2xl font-bold text-center ml-10"
-                        >
-                            {
-                                ">"
-                            }
-                        </h1>
-                    </button>
+                        Con mi trabajo no pretendo precisión histórica ni perfección anatómica, sino transmitir la emoción o el estado de ánimo que sugiere cada nuevo busto que esculpo.
+                    </h3>
                 </div>
-                <Image
-                    src={proyects[imagesProyects].img}
-                    alt={"imagen"}
-                    width={300}
-                    height={300}
-                />
-
-                <h1
-                    className="text-white text-2xl font-bold text-center ml-10"
-                >
-                    {proyects[imagesProyects].title}
-                </h1>
-
-
-
 
             </div>
-
-
-
 
         </div>
     )

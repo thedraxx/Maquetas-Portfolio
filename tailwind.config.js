@@ -26,11 +26,12 @@ module.exports = {
       black: "#1f2023",
       dark: "#2c2f33",
       white: "#F9FAFB",
-      navbar: "#F0EEED",
+      navbar: "#d6d6d6",
       red: "#F87171",
       button: "#E5FDD1",
       blue: "#60A5FA",
       gray: "#DFDFDE",
+      darkblue: "#4E6E81"
     },
     fontFamily: {
       sans: ["Inter", "sans-serif"],

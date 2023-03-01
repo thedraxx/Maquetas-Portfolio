@@ -5,6 +5,7 @@ import Projects from '@/components/UI/Projects/Projects';
 import { GetStaticProps } from 'next'
 import uploadAPI from '@/api/uploadApi';
 import { IProyects } from '@/interface';
+import Footer from '../components/UI/Footer/Footer';
 
 interface Props {
   proyects: IProyects[]
@@ -19,11 +20,9 @@ const index = ({ proyects }: Props) => {
       title='Home | Portafolio'
       description='Portafolio de proyectos'
     >
-      <ContainerImg
-        proyects={proyects}
-      />
+      <ContainerImg />
 
-      <div className='grid content-around m-5 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50'>
+      <div className='bg-navbar grid content-around p-5 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50'>
         {
           proyects.map((proyect) => (
             <Projects
@@ -35,6 +34,7 @@ const index = ({ proyects }: Props) => {
           ))
         }
       </div>
+
     </Layout>
   )
 }
