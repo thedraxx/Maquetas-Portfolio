@@ -30,9 +30,8 @@ const Upload = ({ isLogged }: Props) => {
             description='Add your Proyect'
 
         >
-            <div className='flex flex-auto w-auto h-auto justify-center items-center  mb-96'>
+            <div className='flex flex-auto w-auto h-auto justify-center items-center'>
                 <AddProyect />
-
             </div>
         </Layout>
 
