@@ -5,7 +5,6 @@ import Projects from '@/components/UI/Projects/Projects';
 import { GetStaticProps } from 'next'
 import uploadAPI from '@/api/uploadApi';
 import { IProyects } from '@/interface';
-import Footer from '../components/UI/Footer/Footer';
 
 interface Props {
   proyects: IProyects[]
