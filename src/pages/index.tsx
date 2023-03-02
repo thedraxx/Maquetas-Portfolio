@@ -46,7 +46,7 @@ const index = ({ proyects }: Props) => {
 //- The data can be publicly cached (not user-specific).
 //- The page must be pre-rendered (for SEO) and be very fast — getStaticProps generates HTML and JSON files, both of which can be cached by a CDN for performance.
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getServerSideProps: GetStaticProps = async (ctx) => {
 
   const { data } = await uploadAPI.get('/posts')
 
@@ -57,6 +57,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     }
   }
 }
+
 
 
 
