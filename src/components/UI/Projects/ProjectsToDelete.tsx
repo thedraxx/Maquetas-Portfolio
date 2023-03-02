@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { IProyects } from '@/interface';
 import uploadAPI from '@/api/uploadApi';
+import { DeleteContext } from '../../context/Delete/DeleteContext';
 
 interface Props {
     idposts: string
@@ -11,7 +12,10 @@ interface Props {
 }
 
 const ProjectsToDelete = ({ idposts, title, img }: Props) => {
-    const [confirm, setConfirm] = useState(false)
+
+    const { changeState } = useContext(DeleteContext)
+    const [sureToDelete, setSureToDelete] = useState(false)
+
 
     let imagen = ""
 
@@ -29,6 +33,7 @@ const ProjectsToDelete = ({ idposts, title, img }: Props) => {
     const deleteProyect = async (idposts: string) => {
         try {
             await uploadAPI.delete(`/posts/${idposts}`)
+            changeState()
         } catch (error) {
             console.log(error)
         }
@@ -55,6 +60,8 @@ const ProjectsToDelete = ({ idposts, title, img }: Props) => {
                     {title}
                 </h1>
             </button>
+
+
         </div >
     )
 }

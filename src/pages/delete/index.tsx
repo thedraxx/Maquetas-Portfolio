@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import AuthLayout from '../../components/Layout/AuthLayout';
-import { auth } from '@/components/auth/FirebaseAuth';
-import { GetServerSidePropsContext } from 'next';
 import uploadAPI from '@/api/uploadApi';
 import { IProyects } from '@/interface';
-import Projects from '@/components/UI/Projects/Projects';
 import ProjectsToDelete from '@/components/UI/Projects/ProjectsToDelete';
-
-interface Props {
-    proyects: IProyects[]
-}
+import { DeleteContext } from '@/components/context/Delete';
 
 
 const Delete = () => {
+
+    const { isChanged } = useContext(DeleteContext)
 
     const [maquetas, setMaquetas] = useState<IProyects[]>([])
 
 
     useEffect(() => {
         checkMaquetas()
-    }, [])
+    }, [isChanged])
 
 
     const checkMaquetas = async () => {
