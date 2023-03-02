@@ -26,17 +26,16 @@ const Projects = ({ idposts, title, img }: Props) => {
 
     return (
         <div className='relative flex justify-center flex-col items-center w-auto h-auto mb-24'>
-            <Image src={imagen} width={400} height={500} alt='project' className='p-5 ' />
-
             <Link
                 href={`/maqueta/${idposts}`}
-                className='absolute  text-2xl font-bold text-white'
+                className='justify-center items-center flex  flex-col w-auto h-auto '
             >
-                {title}
+                <Image src={imagen} width={400} height={500} alt='project' className='p-5 rounded-3xl' />
+                <h1 className='capitalize  text-xl font-bold text-black justify-center items-center'>
+                    {title}
+                </h1>
             </Link>
-
         </div >
-
     )
 }
 

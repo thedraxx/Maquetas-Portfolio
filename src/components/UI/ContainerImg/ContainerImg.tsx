@@ -2,27 +2,21 @@ import Image from 'next/image'
 import React from 'react'
 
 const ContainerImg = () => {
-
-
-
-
     return (
         <div>
             <div className='sm: flex-col flex justify-center items-center bg-darkblue md:flex-row'>
                 <div className='sm:flex justify-center items-center w-auto h-auto p-5 flex-col col-auto lg:flex-col xl:flex-col'>
                     <Image
                         src="/images/banner.png"
-                        width={1000}
+                        width={1600}
                         height={400}
                         alt='banner image'
                         className='p-5 rounded-3xl'
                     />
                 </div>
                 <div
-                    style={{
-                        width: '50%',
-                    }}
-                >
+                    className='sm:flex justify-center items-center w-auto h-auto p-5 flex-col col-auto lg:items- p-5 '>
+
                     <h1 className='text-4xl font-bold text-white mb-5'>Serie: Hombres de Mar</h1>
 
                     <h2 className='text-xl text-white mb-5 first-letter:uppercase '>Bustos en escala 1:6 con temática marinera. Todos ellos están esculpidos con diferentes tipos de masillas y pintados en su mayoría con pinturas acrílicas.</h2>

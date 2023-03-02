@@ -2,18 +2,20 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react'
 import { LoginContext } from '@/components/context/Login/LoginContext';
+import Logout from '../../../helpers/Logout';
 
 const AuthNavbar = () => {
 
     const [isOpen, setIsOpen] = React.useState(true);
     const { isLoggedIn } = useContext(LoginContext)
     const ruta = useRouter()
+    const { handleLogout } = Logout()
 
     return (
         <>
             <nav className="h-100 flex items-center justify-start  flex-wrap bg-teal-500 p-6 bg-navbar border-b-4  ">
                 <div className="flex items-center  flex-shrink-0 text-white mr-6 flex-row">
-                    <span className="font-semibold text-xl tracking-tight text-white text-2xl flex flex-row"><h1 className='  text-black text-2xl hover:text-white transition-all'>Mochilote Sculpting</h1></span>
+                    <span className="font-semibold text-xl tracking-tight text-white text-2xl flex flex-row"><h1 className='  text-black text-2xl'>Administrador</h1></span>
                 </div>
 
                 <div style={{ flex: 1 }}></div>
@@ -26,9 +28,19 @@ const AuthNavbar = () => {
                 <div className={`w-full block flex-end lg:flex lg:items-center  ${isOpen ? "lg:w-auto hidden " : "lg:w-auto"}`}>
                     <div className={`text-sm   lg:flex-grow  `}>
                         {
-                            <Link href={"/about"}>
+                            <Link href={"/Upload"}>
                                 <h1 className="block mt-4   lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 text-dark text-lg  transition ease-in-out delay-50">
-                                    Quien es el Mochilote
+                                    Subir Proyectos
+                                </h1>
+                            </Link>
+                        }
+                    </div>
+
+                    <div className={`text-sm   lg:flex-grow  `}>
+                        {
+                            <Link href={"/delete"}>
+                                <h1 className="block mt-4   lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 text-dark text-lg  transition ease-in-out delay-50">
+                                    Eliminar Proyectos
                                 </h1>
                             </Link>
                         }
@@ -37,11 +49,13 @@ const AuthNavbar = () => {
                 <div className={`w-full block flex-end lg:flex lg:items-center  ${isOpen ? "lg:w-auto hidden " : "lg:w-auto"}`}>
                     <div className={`text-sm   lg:flex-grow  `}>
                         {
-                            ruta.pathname === "/Upload" ? null : <Link href={"/login"}>
+                            <button
+                                onClick={handleLogout}
+                            >
                                 <h1 className="block mt-4   lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 text-dark text-lg  transition ease-in-out delay-50">
-                                    Login
+                                    Logout
                                 </h1>
-                            </Link>
+                            </button>
                         }
                     </div>
                 </div>

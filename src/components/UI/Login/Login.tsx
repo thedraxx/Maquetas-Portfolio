@@ -12,6 +12,9 @@ const Login = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [isValid, setIsValid] = useState<boolean>(true);
+    const [error, setError] = useState<boolean>(false);
+
+
 
     const handlesSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
@@ -21,6 +24,7 @@ const Login = () => {
 
             if (resp.user) {
                 StartLogin();
+                setError(false);
                 router.replace('/Upload',
                     {
                         pathname: '/Upload',
@@ -30,6 +34,8 @@ const Login = () => {
             }
 
         } catch (error) {
+            setError(true);
+
             console.log(error);
         }
     }
@@ -77,7 +83,16 @@ const Login = () => {
                     disabled={isValid}>
                     Login
                 </button>
+
+
             </form>
+            {
+                error && (
+                    <div className='flex flex-col col-auto col-span-1 mt-10 bg-red rounded-3xl'>
+                        <button className='p-5 bg-red rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 text-white' onClick={() => setError(false)}>A ocurrido un Error</button>
+                    </div>
+                )
+            }
         </div>
     );
 }

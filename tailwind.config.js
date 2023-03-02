@@ -27,7 +27,7 @@ module.exports = {
       dark: "#2c2f33",
       white: "#F9FAFB",
       navbar: "#d6d6d6",
-      red: "#F87171",
+      red: "#FF0303",
       button: "#E5FDD1",
       blue: "#60A5FA",
       gray: "#DFDFDE",

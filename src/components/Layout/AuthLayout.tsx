@@ -30,3 +30,4 @@ const AuthLayout = ({ children, title }: LayoutProps) => {
 }
 
 export default AuthLayout
+

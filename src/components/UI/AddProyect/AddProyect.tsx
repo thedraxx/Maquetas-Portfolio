@@ -1,36 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { UploadContext } from '@/components/context/Upload';
 import uploadAPI from '@/api/uploadApi';
-import { LoginContext } from '@/components/context/Login/LoginContext';
-import { auth } from '@/components/auth/FirebaseAuth';
-import { useRouter } from 'next/router';
-
 
 const AddProyect = () => {
-    const { StartLogout } = useContext(LoginContext)
     const { handleAddMaqueta, urlOfImages, isValid, clearProyect } = useContext(UploadContext);
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [materials, setMaterials] = useState<string>("")
     const [stepbystep, setStepbystep] = useState<string>("")
-    const router = useRouter();
-
-    const handleLogout = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.preventDefault();
-
-        try {
-            await auth.signOut();
-            StartLogout();
-            router.replace('/login',
-                {
-                    pathname: '/login',
-                }
-            );
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
 
     const handleAdd = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
@@ -43,8 +20,6 @@ const AddProyect = () => {
         }
 
         const newMaquetaJSON = JSON.stringify(newMaqueta);
-
-        console.log(materials)
 
         // hacer peticion axios para crear un nuevo proyecto
         await uploadAPI.post('/posts',
@@ -65,9 +40,7 @@ const AddProyect = () => {
     }
 
     return (
-        <div className='flex flex-col col-auto'
-
-        >
+        <div className='flex flex-col col-auto'>
             <form
                 className='flex flex-col col-auto  mt-10'
             >
@@ -119,13 +92,6 @@ const AddProyect = () => {
                     Cargar Proyecto
                 </button>
             </form>
-
-            <button
-                onClick={(e) => handleLogout(e)}
-                className='bg-red mt-2 mb-5 p-5 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75'
-            >
-                Salir
-            </button>
         </div>
     )
 }

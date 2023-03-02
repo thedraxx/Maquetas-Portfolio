@@ -17,6 +17,7 @@ const maqueta = ({ project }: Props) => {
                 title={project.title}
                 description={project.description}
             >
+                {/* Title and description */}
                 <div
                     className='flex justify-center items-center'
                 >
@@ -48,25 +49,66 @@ const maqueta = ({ project }: Props) => {
                     </div>
                 </div>
 
-                <div>
-                    <h1 className='text-3xl font-bold text-black mb-5'>Materiales Usados:</h1>
-                    {
-                        /*   <ul className='text-xl text-black mb-5 items-center  justify-center first-letter:uppercase '>
-                            {
-                                project.materials.includes(',') ?
-                                    project.materials.split(',').map((material, index) => (
-                                        <li key={index}>{material}</li>
-                                    ))
-                                    :
-                                    <li>{project.materials}</li>
-                            }
-    
-                        </ul>  */
-                    }
-                </div>
+
+                {/* Materials */}
 
                 <div
-                    className=' grid content-around m-5 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50'
+                    className='flex justify-center items-center'
+                >
+                    <div
+                        className='sm:flex justify-center items-center w-auto h-auto p-5 flex-col col-auto lg:flex-col xl:flex-col'
+                    >
+
+                        <div
+                            className='mt-5  text-center flex justify-center items-center w-auto h-auto p-5 flex-col col-auto w-1/3'
+                        >
+                            <h1
+                                className='text-3xl font-bold text-black mb-5'
+                            >Materiales</h1>
+                            <h2 className='text-xl text-black mb-5 items-center  justify-center first-letter:uppercase '>
+                                {project.materials}
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+
+                {/* StepByStep */}
+
+                <div
+                    className='flex justify-center items-center'
+                >
+                    <div
+                        className='sm:flex justify-center items-center w-auto h-auto p-5 flex-col col-auto lg:flex-col xl:flex-col'
+                    >
+
+                        <div
+                            className='mt-5  text-center flex justify-center items-center w-auto h-auto p-5 flex-col col-auto w-1/3'
+                        >
+                            <h1
+                                className='text-3xl font-bold text-black mb-5'
+                            >Pasos a seguir:</h1>
+                            <h2 className='text-xl text-black mb-5 items-center  justify-center first-letter:uppercase '>
+                                {
+                                    project.stepbystep.includes(',') ?
+                                        project.stepbystep.split(',').map((step, index) => (
+                                            <div key={index}>
+                                                <p>{step}</p>
+                                            </div>
+                                        ))
+                                        :
+                                        <div>
+                                            <p>{project.stepbystep}</p>
+                                        </div>
+                                }
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+
+
+                {/* Images */}
+                <div
+                    className='grid content-around  w-auto sm:grid-cols-1 justify-center items-center  md:grid-cols-2 gap-2 lg:grid-cols-4 gap-4 '
                 >
                     {
                         project.img.includes(',') ?
@@ -87,12 +129,14 @@ const maqueta = ({ project }: Props) => {
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
-                                    height: 'calc(50vh - 60px)',
+                                    height: 'calc(2vh - 60px)',
                                 }}
                             >
                             </div>
                     }
                 </div>
+
+
 
             </Layout>
         </>
