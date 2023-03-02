@@ -2,12 +2,11 @@ import React from 'react'
 import Layout from '../../components/Layout/Layout';
 import { GetStaticPaths, GetStaticProps } from 'next'
 import uploadAPI from '@/api/uploadApi';
-import { IProyectIndividual, IProyects } from '@/interface';
+import { IProyects } from '@/interface';
 import Image from 'next/image';
-import Footer from '../../components/UI/Footer/Footer';
 
 interface Props {
-    project: IProyectIndividual
+    project: IProyects
 }
 
 const maqueta = ({ project }: Props) => {
@@ -49,11 +48,25 @@ const maqueta = ({ project }: Props) => {
                     </div>
                 </div>
 
+                <div>
+                    <h1 className='text-3xl font-bold text-black mb-5'>Materiales Usados:</h1>
+                    {
+                        /*   <ul className='text-xl text-black mb-5 items-center  justify-center first-letter:uppercase '>
+                            {
+                                project.materials.includes(',') ?
+                                    project.materials.split(',').map((material, index) => (
+                                        <li key={index}>{material}</li>
+                                    ))
+                                    :
+                                    <li>{project.materials}</li>
+                            }
+    
+                        </ul>  */
+                    }
+                </div>
 
                 <div
-
                     className=' grid content-around m-5 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50'
-
                 >
                     {
                         project.img.includes(',') ?
@@ -77,7 +90,6 @@ const maqueta = ({ project }: Props) => {
                                     height: 'calc(50vh - 60px)',
                                 }}
                             >
-
                             </div>
                     }
                 </div>
@@ -105,7 +117,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 
-    const { data } = await uploadAPI.get<IProyectIndividual>(`/posts/${params?.id}`)
+    const { data } = await uploadAPI.get<IProyects>(`/posts/${params?.id}`)
 
     if (!data) {
         return {

@@ -1,90 +1,39 @@
 import Layout from '@/components/Layout/Layout';
 import AddProyect from '../../components/UI/AddProyect/AddProyect';
-import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
-import { LoginContext } from '../../components/context/Login/LoginContext';
+import React from 'react';
+import { auth } from '@/components/auth/FirebaseAuth';
+import { GetServerSidePropsContext } from 'next';
+import AuthLayout from '../../components/Layout/AuthLayout';
 
-
-interface Props {
-    isLogged: Boolean
-}
-
-
-const Upload = ({ isLogged }: Props) => {
-    const { isLoggedIn } = useContext(LoginContext);
-    console.log(isLoggedIn);
-
-    // const router = useRouter();
-
-    // if (!isLoggedIn) {
-    //     router.replace('/login')
-    //     return null
-    // }
-
-
-
+const Upload = () => {
 
     return (
-        <Layout
+        <AuthLayout
             title='Add Proyect | Add Proyect'
-            description='Add your Proyect'
-
         >
-            <div className='flex flex-auto w-auto h-auto justify-center items-center'>
+            <div className='flex flex-auto w-auto h-auto justify-center items-center flex-col'>
+                <h1 className='text-2xl text-center text-dark mt-10'>Bienvenido Mochilato</h1>
                 <AddProyect />
             </div>
-        </Layout>
+        </AuthLayout>
 
     );
 };
 
 
 
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
 
-    const { req, res } = context
-
-    console.log(req.headers.cookie)
-
-    // TODO: Hacer la peticion 
-    // const validate = await fetch('http://localhost:3000/api/validate', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Cookie': req.headers.cookie
-    //     },
-    //     body: JSON.stringify({
-    //         token: req.headers.cookie
-    //     })
-    // })
-
-    // const data = await validate.json()
-
-    // console.log(data)
-
-    // if (!data ){
-    //     return {
-    //         redirect: {
-    //             destination: '/login',
-    //             permanent: false,
-    //         },
-    //     }
-    // }
-
-    const isLogged = true
-
-    if (!isLogged) {
-        return {
-            redirect: {
-                destination: '/login',
-                permanent: false,
-            },
+    await auth.onAuthStateChanged((user) => {
+        if (!user) {
+            context.res.writeHead(302, { Location: '/login' });
+            context.res.end();
         }
-    }
+    })
 
     return {
         props: {
-            isLogged,
+            user: "Auth"
         },
     }
 }

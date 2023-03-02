@@ -1,7 +1,6 @@
 import { useReducer } from 'react';
 import { LoginReducer } from './LoginReducer';
 import { LoginContext } from './LoginContext';
-import uploadApi from '@/api/uploadApi';
 
 export interface LoginState {
     isLoggedIn: boolean;
@@ -19,18 +18,7 @@ export const LoginProvider = ({ children }: Props) => {
 
     const [state, dispatch] = useReducer(LoginReducer, Login_INITIAL_STATE)
 
-    const StartLogin = async (usser: string, password: string) => {
-
-        // const login = await uploadApi.post('/login', {
-        //     usser,
-        //     password
-        // })
-
-        // if (!login) {
-        //     return false
-        // }
-
-
+    const StartLogin = async () => {
         dispatch({
             type: '[Login] - LoginAction',
         })

@@ -28,8 +28,6 @@ const Layout = ({ children, title = "xd", description = "xd", }: LayoutProps) =>
             </Head>
             <Navbar />
 
-
-
             <main
                 style={{
                     backgroundColor: '#d6d6d6',

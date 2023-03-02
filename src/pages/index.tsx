@@ -22,14 +22,14 @@ const index = ({ proyects }: Props) => {
     >
       <ContainerImg />
 
-      <div className='bg-navbar grid content-around p-5 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50'>
+      <div className='bg-navbar grid content-around p-16 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50'>
         {
           proyects.map((proyect) => (
             <Projects
               key={proyect.idposts}
-              id={proyect.idposts}
+              idposts={proyect.idposts}
               title={proyect.title}
-              image={proyect.img}
+              img={proyect.img}
             />
           ))
         }
@@ -45,7 +45,6 @@ const index = ({ proyects }: Props) => {
 //- The data comes from a headless CMS.
 //- The data can be publicly cached (not user-specific).
 //- The page must be pre-rendered (for SEO) and be very fast — getStaticProps generates HTML and JSON files, both of which can be cached by a CDN for performance.
-
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
 

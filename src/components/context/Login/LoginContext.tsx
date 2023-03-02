@@ -4,7 +4,7 @@ export interface UIContextProps {
     isLoggedIn: boolean;
 
     // Method
-    StartLogin: (user: string, password: string) => void;
+    StartLogin: () => void;
     StartLogout: () => void;
 }
 
