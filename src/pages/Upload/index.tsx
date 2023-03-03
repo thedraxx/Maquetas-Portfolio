@@ -1,4 +1,3 @@
-import Layout from '@/components/Layout/Layout';
 import AddProyect from '../../components/UI/AddProyect/AddProyect';
 import React from 'react';
 import { auth } from '@/components/auth/FirebaseAuth';

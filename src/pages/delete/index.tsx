@@ -4,6 +4,8 @@ import uploadAPI from '@/api/uploadApi';
 import { IProyects } from '@/interface';
 import ProjectsToDelete from '@/components/UI/Projects/ProjectsToDelete';
 import { DeleteContext } from '@/components/context/Delete';
+import { auth } from '@/components/auth/FirebaseAuth';
+import { GetServerSidePropsContext } from 'next';
 
 
 const Delete = () => {
@@ -47,6 +49,21 @@ const Delete = () => {
 }
 
 
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+
+    await auth.onAuthStateChanged((user) => {
+        if (!user) {
+            context.res.writeHead(302, { Location: '/login' });
+            context.res.end();
+        }
+    })
+
+    return {
+        props: {
+            user: "Auth"
+        },
+    }
+}
 
 
 export default Delete
