@@ -41,7 +41,7 @@ const About = () => {
                         </h3>
 
                         <Image
-                            src='/images/mochimate.png'
+                            src='/images/perfil.png'
                             width={400}
                             height={400}
                             alt='Profile'
