@@ -3,14 +3,16 @@ import { UploadContext } from '@/components/context/Upload';
 import uploadAPI from '@/api/uploadApi';
 
 const AddProyect = () => {
-    const { handleAddMaqueta, urlOfImages, isValid, clearProyect } = useContext(UploadContext);
+    const { handleAddMaqueta, urlOfImages, isValid, clearProyect, handleActiveAlert } = useContext(UploadContext);
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [materials, setMaterials] = useState<string>("")
     const [stepbystep, setStepbystep] = useState<string>("")
 
     const handleAdd = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+
         e.preventDefault();
+
         const newMaqueta = {
             title,
             description,
@@ -30,6 +32,8 @@ const AddProyect = () => {
                 }
             }
         );
+
+        handleActiveAlert();
 
         // reseteo los valores
         setTitle('');

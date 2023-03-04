@@ -30,6 +30,7 @@ const Delete = () => {
             title='Delete Proyect | Delete Proyect'
         >
             <Modal
+
                 isOpen={isModalOpen}
                 onRequestClose={() => setIsModalOpen(false)}
                 overlayClassName='bg-black bg-opacity-50 fixed inset-0 z-10'
@@ -61,7 +62,8 @@ const Delete = () => {
                 </div>
             </Modal>
 
-            <div className='bg-navbar grid content-around p-16 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50'>
+            <div
+                className='w-auto bg-navbar grid content-around p-16 sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 even:bg-slate-50'>
                 {
                     maquetas.map((proyect) => (
                         <ProjectsToDelete

@@ -27,6 +27,10 @@ const LoginHelper = () => {
         } catch (error) {
             setError(true);
 
+            setTimeout(() => {
+                setError(false);
+            }, 3000);
+
             console.log(error);
         }
     }

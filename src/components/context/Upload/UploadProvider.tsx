@@ -1,6 +1,5 @@
-import { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import { UploadContext, UploadReducer } from './';
-
 export interface UploadState {
     isValid: boolean;
     urlOfImages: string[];
@@ -19,7 +18,7 @@ export const UploadProvider = ({ children }: Props) => {
 
 
     const [state, dispatch] = useReducer(UploadReducer, Upload_INITIAL_STATE)
-
+    const [activateAlert, setActivateAlert] = useState(false)
 
     const handleAddMaqueta = async (e: FileList | (string | Blob)[] | null | any) => {
 
@@ -63,11 +62,18 @@ export const UploadProvider = ({ children }: Props) => {
         })
     }
 
+    const handleActiveAlert = () => {
+        setActivateAlert(!activateAlert)
+    }
+
+
     return (
         <UploadContext.Provider value={{
             ...state,
             handleAddMaqueta,
-            clearProyect
+            clearProyect,
+            handleActiveAlert,
+            activateAlert
         }}>
             {children}
         </UploadContext.Provider>

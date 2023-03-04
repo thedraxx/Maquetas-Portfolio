@@ -10,9 +10,10 @@ const Footer = () => {
                 height: '60px',
                 backgroundColor: 'black',
                 bottom: '0',
+                top: "0",
                 width: '100%',
                 position: 'relative',
-                padding: ' 50px',
+                padding: ' 100px',
             }}
         >
             <div

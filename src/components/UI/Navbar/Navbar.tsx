@@ -10,7 +10,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="h-100 flex items-center justify-start  flex-wrap bg-teal-500 p-6 bg-navbar border-b-4  ">
+            <nav className=" h-100 flex items-center justify-start  flex-wrap bg-teal-500 p-6 bg-navbar border-b-4  ">
                 <div className="flex items-center  flex-shrink-0 text-white mr-6 flex-row">
                     <Link href={"/"}>
                         <span className="font-semibold text-xl tracking-tight text-white text-2xl flex flex-row"><h1 className='  text-black text-2xl hover:text-white transition-all'>Mochilote Sculpting</h1></span>
