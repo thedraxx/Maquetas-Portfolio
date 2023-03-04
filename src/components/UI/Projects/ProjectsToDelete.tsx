@@ -1,9 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link'
-import React, { useContext, useState } from 'react'
-import { IProyects } from '@/interface';
-import uploadAPI from '@/api/uploadApi';
-import { DeleteContext } from '../../context/Delete/DeleteContext';
+import React, { useState, useContext } from 'react'
+import { DeleteContext } from '@/components/context/Delete';
 
 interface Props {
     idposts: string
@@ -13,12 +10,9 @@ interface Props {
 
 const ProjectsToDelete = ({ idposts, title, img }: Props) => {
 
-    const { changeState } = useContext(DeleteContext)
-    const [sureToDelete, setSureToDelete] = useState(false)
-
+    const { OpenModalAndSaveIdToDelete } = useContext(DeleteContext)
 
     let imagen = ""
-
     // Eliminamos lo que haya despues de la coma
     if (img.includes(',')) {
         const letraEliminar = ","
@@ -30,20 +24,10 @@ const ProjectsToDelete = ({ idposts, title, img }: Props) => {
         imagen = img
     }
 
-    const deleteProyect = async (idposts: string) => {
-        try {
-            await uploadAPI.delete(`/posts/${idposts}`)
-            changeState()
-        } catch (error) {
-            console.log(error)
-        }
-
-    }
-
     return (
         <div className='relative flex justify-center flex-col items-center w-auto h-auto mb-24'>
             <button
-                onClick={() => deleteProyect(idposts)}
+                onClick={() => OpenModalAndSaveIdToDelete(idposts)}
                 className='justify-center items-center flex  flex-col w-auto h-auto '
             >
                 {
@@ -55,13 +39,10 @@ const ProjectsToDelete = ({ idposts, title, img }: Props) => {
                         <Image src={imagen} width={400} height={500} alt='project' className='p-5 rounded-3xl' />
                     )
                 }
-
                 <h1 className='capitalize  text-xl font-bold text-black justify-center items-center'>
                     {title}
                 </h1>
             </button>
-
-
         </div >
     )
 }

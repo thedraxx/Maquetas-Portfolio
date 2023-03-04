@@ -1,20 +1,24 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
-import { UploadContext, UploadProvider } from '@/components/context/Upload';
-import { LoginProvider } from '@/components/context/Login/LoginProvider';
+// pages/_app.js
+import React from 'react';
+import App from 'next/app';
+import Modal from 'react-modal';
+import { UploadProvider } from '@/components/context/Upload';
 import { DeleteProvider } from '@/components/context/Delete';
+import '@/styles/globals.css';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return (
+Modal.setAppElement('#__next');
 
-    <LoginProvider>
+class MyApp extends App {
+  render() {
+    const { Component, pageProps } = this.props;
+    return (
       <UploadProvider>
         <DeleteProvider>
           <Component {...pageProps} />
         </DeleteProvider>
       </UploadProvider>
-    </LoginProvider>
-  )
-
-
+    );
+  }
 }
+
+export default MyApp;

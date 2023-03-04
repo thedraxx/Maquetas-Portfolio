@@ -1,18 +1,17 @@
-import React, { useContext, useState } from 'react';
-import { LoginContext } from '@/components/context/Login/LoginContext';
+
 import { auth } from '@/components/auth/FirebaseAuth';
 import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 
 const Logout = () => {
 
-    const { StartLogout } = useContext(LoginContext)
     const router = useRouter();
 
-    const handleLogout = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.preventDefault();
+    const [error, setError] = useState<boolean>(false);
+
+    const handleLogout = async () => {
         try {
             await auth.signOut();
-            StartLogout();
             router.replace('/login');
         } catch (error) {
             console.log(error);
@@ -20,7 +19,9 @@ const Logout = () => {
     }
 
     return {
-        handleLogout
+        handleLogout,
+        setError,
+        error
     }
 }
 

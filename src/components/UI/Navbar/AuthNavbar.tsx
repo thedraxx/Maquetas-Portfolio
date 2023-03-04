@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react'
-import { LoginContext } from '@/components/context/Login/LoginContext';
+
 import Logout from '../../../helpers/Logout';
 
 const AuthNavbar = () => {
 
     const [isOpen, setIsOpen] = React.useState(true);
-    const { isLoggedIn } = useContext(LoginContext)
     const ruta = useRouter()
     const { handleLogout } = Logout()
 

@@ -1,44 +1,11 @@
-import { auth } from '@/components/auth/FirebaseAuth';
-import { LoginContext } from '@/components/context/Login/LoginContext';
-import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-
+import React, { useEffect, useState } from 'react';
+import LoginHelper from '../../../helpers/LoginHelper';
 
 const Login = () => {
-
-    const { StartLogin, isLoggedIn } = useContext(LoginContext);
-    const router = useRouter();
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [isValid, setIsValid] = useState<boolean>(true);
-    const [error, setError] = useState<boolean>(false);
-
-
-
-    const handlesSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.preventDefault();
-
-        try {
-            const resp = await signInWithEmailAndPassword(auth, email, password);
-
-            if (resp.user) {
-                StartLogin();
-                setError(false);
-                router.replace('/Upload',
-                    {
-                        pathname: '/Upload',
-                        query: { uid: resp.user.uid, email: resp.user.email },
-                    }
-                );
-            }
-
-        } catch (error) {
-            setError(true);
-
-            console.log(error);
-        }
-    }
+    const { handlesSubmit, setError, error } = LoginHelper();
 
     useEffect(() => {
         if (email.trim().length > 0 && password.trim().length > 0) {
@@ -79,7 +46,7 @@ const Login = () => {
                     `}
                     // className='mt-2 mb-5 p-5 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75'
                     type="submit"
-                    onClick={(e) => handlesSubmit(e)}
+                    onClick={(e) => handlesSubmit(e, email, password)}
                     disabled={isValid}>
                     Login
                 </button>
