@@ -4,7 +4,8 @@ type UploadActionType =
   | { type: "[Upload] - isValidPressButton" }
   | { type: "[Upload] - AddFile"; payload: string }
   | { type: "[Upload] - Loading"; payload: boolean }
-  | { type: "[Upload] - ClearProyect" };
+  | { type: "[Upload] - ClearProyect" }
+  | { type: "[Upload] - ClearArrayImages" };
 
 export const UploadReducer = (
   state: UploadState,
@@ -35,6 +36,7 @@ export const UploadReducer = (
         urlOfImages: [],
         isValid: false,
       };
+
     default:
       return state;
   }

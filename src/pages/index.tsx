@@ -21,7 +21,24 @@ const index = ({ proyects }: Props) => {
     >
       <ContainerImg />
 
-      <div className='bg-navbar grid content-around p-16 w-auto  sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 odd:bg-white even:bg-slate-50'>
+      {
+        proyects.length === 0 && (
+          <div
+            style={{
+              width: "100%",
+              height: "calc(100vh - 500px)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <h1 className='text-2xl text-center items-center justify-center text-dark mt-10'>No hay proyectos</h1>
+
+          </div>
+        )
+      }
+
+      <div className='w-100 h-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-10 pb-24'>
         {
           proyects.map((proyect) => (
             <Projects

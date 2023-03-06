@@ -16,9 +16,9 @@ const Login = () => {
     }, [email, password])
 
     return (
-        <div className='flex flex-col col-auto mb-96'
+        <div className='flex flex-col col-auto mb-96 mt-16'
             style={{
-                height: 'calc(50vh - 4rem)',
+                height: 'calc(50vh - 18rem)',
             }}
         >
             <form

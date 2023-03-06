@@ -3,7 +3,7 @@ import { UploadContext } from '@/components/context/Upload';
 import uploadAPI from '@/api/uploadApi';
 
 const AddProyect = () => {
-    const { handleAddMaqueta, urlOfImages, isValid, clearProyect, handleActiveAlert } = useContext(UploadContext);
+    const { handleAddMaqueta, urlOfImages, isValid, clearProyect, handleActiveAlert, clearArrayImages } = useContext(UploadContext);
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [materials, setMaterials] = useState<string>("")
@@ -40,6 +40,7 @@ const AddProyect = () => {
         setDescription('');
         setMaterials('');
         setStepbystep('');
+        clearArrayImages();
         clearProyect();
     }
 

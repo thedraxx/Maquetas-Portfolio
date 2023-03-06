@@ -27,22 +27,13 @@ const Footer = () => {
                 }}
 
             >
-                <p style={{ color: 'white' }}>© 2021 - All rights reserved</p>
-                <h1
-                    style={{ color: 'white' }}
-                >
-                    Frank
-                </h1>
-                <h1
-                    style={{ color: 'white' }}
-                >
-                    Tomas
-                </h1>
+                <h3 style={{ color: 'white' }}>© 2021 - All rights reserved</h3>
+                <p />
+                <h3 style={{ color: 'white' }}>Developed by <a href="https://www.linkedin.com/in/eduardo-ram%C3%ADrez-ram%C3%ADrez-5b1b1b1b3/" style={{ color: 'white' }}>Francisco Cerrano</a></h3>
+                <p />
+                <h3 style={{ color: 'white' }}> & <a href="https://www.linkedin.com/in/eduardo-ram%C3%ADrez-ram%C3%ADrez-5b1b1b1b3/" style={{ color: 'white' }}>Tomas Guida</a></h3>
             </div>
-
-
         </footer>
-
     )
 }
 

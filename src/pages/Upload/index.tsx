@@ -5,6 +5,7 @@ import { GetServerSidePropsContext } from 'next';
 import AuthLayout from '../../components/Layout/AuthLayout';
 import Modal from 'react-modal';
 import { UploadContext } from '../../components/context/Upload/UploadContext';
+import Footer from '@/components/UI/Footer/Footer';
 
 const Upload = () => {
 
@@ -49,6 +50,7 @@ const Upload = () => {
                 <h1 className='text-2xl text-center text-dark mt-10'>Bienvenido Mochilato</h1>
                 <AddProyect />
             </div>
+            <Footer />
         </AuthLayout>
 
     );

@@ -7,6 +7,7 @@ import { DeleteContext } from '@/components/context/Delete';
 import { auth } from '@/components/auth/FirebaseAuth';
 import { GetServerSidePropsContext } from 'next';
 import Modal from 'react-modal';
+import Footer from '../../components/UI/Footer/Footer';
 
 const Delete = () => {
 
@@ -63,19 +64,52 @@ const Delete = () => {
             </Modal>
 
             <div
-                className='w-auto bg-navbar grid content-around p-16 sm:grid-cols-1 gap-1 md:grid-cols-2 gap-2 lg:grid-cols-3 gap-3 even:bg-slate-50'>
-                {
-                    maquetas.map((proyect) => (
-                        <ProjectsToDelete
-                            key={proyect.idposts}
-                            idposts={proyect.idposts}
-                            title={proyect.title}
-                            img={proyect.img}
-                        />
-                    ))
-                }
+                style={{
+                    width: '100%',
+                    height: '100%',
+
+                }}
+            >
+
+
+
+                <div>
+                    {
+
+                        maquetas.length === 0 ?
+                            <div
+                                style={{
+                                    width: "100%",
+                                    height: "calc(100vh - 200px)",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center"
+                                }}
+                            >
+                                <h1 className='text-2xl text-center items-center justify-center text-dark mt-10'>No hay proyectos</h1>
+
+                            </div>
+                            :
+                            <div
+
+                                className='w-100 h-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-10 pb-24'
+                            >
+                                {
+                                    maquetas.map((proyect) => (
+                                        <ProjectsToDelete
+                                            key={proyect.idposts}
+                                            idposts={proyect.idposts}
+                                            title={proyect.title}
+                                            img={proyect.img}
+                                        />
+                                    ))
+                                }
+                            </div>
+                    }
+                </div>
             </div>
-        </AuthLayout>
+            <Footer />
+        </AuthLayout >
     )
 }
 

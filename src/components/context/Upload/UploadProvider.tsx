@@ -47,6 +47,7 @@ export const UploadProvider = ({ children }: Props) => {
                 type: '[Upload] - AddFile',
                 payload: cloudResp.secure_url
             })
+
             dispatch({
                 type: "[Upload] - Loading",
                 payload: false
@@ -66,14 +67,21 @@ export const UploadProvider = ({ children }: Props) => {
         setActivateAlert(!activateAlert)
     }
 
+    const clearArrayImages = () => {
+        dispatch({
+            type: '[Upload] - ClearArrayImages',
+        })
+    }
+
 
     return (
         <UploadContext.Provider value={{
             ...state,
+            activateAlert,
             handleAddMaqueta,
             clearProyect,
             handleActiveAlert,
-            activateAlert
+            clearArrayImages
         }}>
             {children}
         </UploadContext.Provider>
