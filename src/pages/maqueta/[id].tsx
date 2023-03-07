@@ -50,7 +50,7 @@ const Maqueta = ({ project }: Props) => {
 
                 >
                     <div
-                        className='sm:flex justify-center items-center w-auto h-auto p-5 flex-col col-auto lg:flex-col xl:flex-col'
+                        className='mt-5 sm:flex justify-center items-center w-auto h-auto p-5 flex-col col-auto lg:flex-row xl:flex-row'
                     >
                         <Image
                             src={
@@ -59,21 +59,22 @@ const Maqueta = ({ project }: Props) => {
                                     :
                                     project.img
 
-                            } width={500} height={700} alt='project' className='animate__animated animate__bounceIn' style={{
-                                borderRadius: '50px',
+                            } width={300} height={300} alt='project' className='animate__animated animate__bounceIn '
+                            style={{
+                                borderRadius: '25px',
                                 border: 'none',
                                 boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.1)',
                             }} />
 
                         <div
                             id='element-to-animate'
-                            className={"mt-5  text-center flex justify-center items-center w-auto h-auto p-5 flex-col col-auto w-1/3 "}
+                            className={"text-center flex justify-center items-center w-auto h-auto p-5 flex-col col-auto w-1/3 "}
 
                         >
                             <h1
-                                className={`text-3xl font-bold text-black mb-5 animate__animated  ${isInView ? 'animate__fadeInLeft' : ''}`}
+                                className={`text-4xl font-bold text-black mb-5 animate__animated ml-5  ${isInView ? 'animate__fadeInRight' : ''}`}
                             >{project.title}</h1>
-                            <h2 className={`text-xl text-black mb-5 items-center  justify-center first-letter:uppercase animate__animated  ${isInView ? 'animate__fadeInLeft' : ''}`} >
+                            <h2 className={`text-xl ml-5  text-black mb-5 items-center  justify-center first-letter:uppercase animate__animated  ${isInView ? 'animate__fadeInRight' : ''}`} >
                                 {project.description}
                             </h2>
                         </div>
@@ -114,7 +115,7 @@ const Maqueta = ({ project }: Props) => {
                     >
 
                         <div
-                            className='mt-5  text-center flex justify-center items-center w-auto h-auto p-5 flex-col col-auto'
+                            className='text-center flex justify-center items-center w-auto h-auto p-5 flex-col col-auto'
                         >
                             <h1
                                 className={`text-3xl font-bold text-black mb-5 animate__animated  ${isInView ? 'animate__fadeInLeft' : ''}`}

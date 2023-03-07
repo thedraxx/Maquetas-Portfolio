@@ -30,7 +30,20 @@ const Projects = ({ idposts, title, img }: Props) => {
                 href={`/maqueta/${idposts}`}
                 className='justify-center items-center flex  flex-col w-auto h-auto '
             >
-                <Image src={imagen} width={400} height={500} alt='project' className='p-5 rounded-3xl' />
+                <Image
+                    src={imagen}
+                    width={280}
+                    height={350}
+                    alt='project'
+                    style={{
+                        borderRadius: '25px',
+                        boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.75)',
+                        border: 'none'
+
+
+                    }}
+
+                />
                 <h1 className='capitalize  text-xl font-bold text-black justify-center items-center'>
                     {title}
                 </h1>
