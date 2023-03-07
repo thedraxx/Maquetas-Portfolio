@@ -25,7 +25,7 @@ const Projects = ({ idposts, title, img }: Props) => {
     }
 
     return (
-        <div className='relative flex justify-center flex-col items-center w-auto h-auto mb-24'>
+        <div className='relative flex justify-center flex-col items-center w-auto h-auto mb-24 scale-90  hover:scale-100 transition-all '>
             <Link
                 href={`/maqueta/${idposts}`}
                 className='justify-center items-center flex  flex-col w-auto h-auto '

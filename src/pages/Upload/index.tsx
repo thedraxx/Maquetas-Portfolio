@@ -47,7 +47,7 @@ const Upload = () => {
             </Modal>
 
             <div className='flex flex-auto w-auto h-auto justify-center items-center flex-col'>
-                <h1 className='text-2xl text-center text-dark mt-10'>Bienvenido Mochilato</h1>
+                <h1 className='text-2xl text-center text-dark mt-10'>Bienvenido Mochilote</h1>
                 <AddProyect />
             </div>
             <Footer />
