@@ -96,7 +96,8 @@ const Maqueta = ({ project }: Props) => {
                             <h1
                                 className={`text-3xl font-bold text-black mb-5 animate__animated  ${isInView ? 'animate__fadeInRight' : ''}`}
                             >Materiales</h1>
-                            <h2 className='text-xl text-black mb-5 items-center  justify-center first-letter:uppercase '>
+                            <h2 className={`text-xl text-black mb-5 items-center  justify-center first-letter:uppercase animate__animated  ${isInView ? 'animate__fadeInRight' : ''}`}
+                            >
                                 {project.materials}
                             </h2>
                         </div>
