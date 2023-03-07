@@ -122,16 +122,9 @@ const Maqueta = ({ project }: Props) => {
                             <h2 className={`text-xl text-black mb-5 items-center  justify-center first-letter:uppercase animate__animated  ${isInView ? 'animate__fadeInLeft' : ''}`}
                             >
                                 {
-                                    project.stepbystep.includes(',') ?
-                                        project.stepbystep.split(',').map((step, index) => (
-                                            <div key={index}>
-                                                <p>{step}</p>
-                                            </div>
-                                        ))
-                                        :
-                                        <div>
-                                            <p>{project.stepbystep}</p>
-                                        </div>
+                                    <div>
+                                        <p>{project.stepbystep}</p>
+                                    </div>
                                 }
                             </h2>
                         </div>
