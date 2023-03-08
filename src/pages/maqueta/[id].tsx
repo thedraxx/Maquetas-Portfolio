@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react'
 import Layout from '../../components/Layout/Layout';
 import { GetStaticPaths, GetStaticProps } from 'next'
@@ -12,7 +11,7 @@ interface Props {
 
 const Maqueta = ({ project }: Props) => {
 
-    const [isInView, setIsInView] = useState<boolean>(false);
+    const [isInView, setIsInView] = useState<boolean>(true);
 
     useEffect(() => {
         const element = document.getElementById("element-to-animate");
@@ -39,6 +38,7 @@ const Maqueta = ({ project }: Props) => {
             >
                 {/* Title and description */}
                 <div
+                    id='element-to-animate'
                     style={{
                         display: 'flex',
                         justifyContent: 'center',
@@ -67,7 +67,7 @@ const Maqueta = ({ project }: Props) => {
                             }} />
 
                         <div
-                            id='element-to-animate'
+
                             className={"text-center flex justify-center items-center w-auto h-auto p-5 flex-col col-auto w-1/3 "}
 
                         >
@@ -170,7 +170,6 @@ const Maqueta = ({ project }: Props) => {
     )
 }
 
-
 export const getStaticPaths: GetStaticPaths = async () => {
 
     const { data } = await uploadAPI.get<IProyects[]>('/posts')
@@ -186,28 +185,23 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async (context) => {
+    const { params } = context
 
-    const { data } = await uploadAPI.get<IProyects>(`/posts/${params?.id}`)
-
-    if (!data) {
+    try {
+        const data = await uploadAPI.get<IProyects>(`/posts/${params?.id}`)
+            .then(res => res.data)
         return {
-            redirect: {
-                destination: '/',
-                permanent: false
+            props: {
+                project: data,
+                revalidate: 86400
             }
         }
-    }
-
-    return {
-        props: {
-            project: data,
-            revalidate: 86400
+    } catch (err) {
+        return {
+            notFound: true,
         }
     }
 }
-
-
-
 
 export default Maqueta

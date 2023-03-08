@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link'
 import React from 'react'
-import { IProyects } from '@/interface';
 
 interface Props {
     idposts: string
@@ -39,8 +38,6 @@ const Projects = ({ idposts, title, img }: Props) => {
                         borderRadius: '25px',
                         boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.75)',
                         border: 'none'
-
-
                     }}
 
                 />

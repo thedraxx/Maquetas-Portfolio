@@ -7,4 +7,5 @@ export interface IProyects {
   img: string;
   materials: null;
   stepbystep: string;
+  message?: string;
 }
